@@ -14,10 +14,9 @@
 
 | 项目 | 方向与平台 | 核心机制与关键指标 |
 | :--- | :--- | :--- |
+| **[LatchMoE (NPU)](https://github.com/vLLM-HUST/vllm-ascend-hust-LatchMoE)**<br>**[LatchMoE-GPU](https://github.com/Li-changwu/LatchMoE-GPU)** | 图兼容 MoE 专家缓存卸载<br>`Ascend NPU` · `CUDA Graph` · `vLLM` | 面向受限显存的地址稳定、图重放兼容 MoE 专家缓存框架（论文工作，NPU + GPU 双后端）；通过预分配固定槽位、持久设备映射、图外异步 Staging、有界溢出分波（Bounded Waves）与槽位租约保护，在保持捕获计算图稳定权重地址的同时消除远端按需访存瓶颈。 |
 | **[BriskMoE (MoE-SD)](https://github.com/Li-changwu/MoE-SD)** | MoE 卸载 × 推测解码<br>`CUDA` · `vLLM` | 非侵入式 vLLM 插件；通过 Pool-Direct、无同步路由（TASER）、草稿引导预取（DIPP）与推测感知替换消除缓存开销与瞬态溢出，单卡 RTX A6000 实现 Qwen3-30B-A3B **4.80×**、GPT-OSS-120B **5.00×** 解码加速。 |
 | **[Cruise](https://github.com/Li-changwu/Cruise)** | 设备驻留解码控制面<br>`Ascend 910B2` · `CANN` | 基于 DataFlow Device UDF 将解码内层循环、Paged-KV 更新与采样下沉至昇腾设备侧按有界 Epoch 执行；单 Epoch 控制边界载荷从 **136.9 MB 降至 628 B**，Host 控制耗时降低 **3.54×**。 |
-| **[vllm-moe-offload-ascend](https://github.com/Li-changwu/vllm-moe-offload-ascend)** | 昇腾 MoE 专家卸载<br>`Ascend NPU` · `vLLM` | 面向 `vllm-ascend-hust` 的平台级 MoE 卸载插件；支持基于 HBM 预算的自动槽位推导、固定槽位（Fixed-Slot）规划、Hit/Miss 多阶段切分与独立流异步预取。 |
-| **[LatchMoE-GPU](https://github.com/Li-changwu/LatchMoE-GPU)** | 图兼容 MoE 专家卸载<br>`CUDA Graph` · `vLLM` | 面向 vLLM `PIECEWISE` 图重放的 CUDA MoE Offload 插件；通过活跃专家去重、连续 DMA 批量搬运与固定 HBM 槽位计算，缓解 UVA 远端 PCIe 按需访存瓶颈。 |
 | **[KV_Cache](https://github.com/Li-changwu/KV_Cache)** | 长上下文分层 KV 管理<br>`vLLM` · `HBM/DRAM/SSD` | 面向多轮长上下文推理的 Persistent KV Anti-Caching 原型；通过内存常驻三级状态索引与执行前 PrePass，将 SSD 冷对象恢复移出在线请求关键路径。 |
 | **[Flash-SD](https://github.com/Li-changwu/FlashSD)** | 零开销语义推测解码<br>`PyTorch` · `Transformers` | 无需训练、即插即用的推测解码框架；利用目标模型熵动态调节验证阈值并结合并行前瞻锚定，以 `O(1)` 标量投影校验开销实现语义级推理加速。 |
 
