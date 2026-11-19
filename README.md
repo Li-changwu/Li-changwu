@@ -27,16 +27,14 @@
 
 ---
 
-### 开源社区与开发者工具
+### 开源社区建设
 
 - **[vLLM & vLLM-Ascend 推理研究日报与技术专题工作台](https://lab.sage.org.ai/auto-research-report-website/)** · [[GitHub](https://github.com/intellistream/auto-research-report-website)]  
   社区研报网站负责人，持续追踪 vLLM 与 vLLM-Ascend 核心性能优化演进，建设 ACLGraph 图执行等系统技术专题综述，并参与 [vLLM-HUST](https://github.com/vLLM-HUST) 国产算力推理运行时生态建设。
-- **[Codex Provider Switcher](https://github.com/Li-changwu/codex-provider-switcher)** · [[VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Li-changwu.codex-provider-switcher-vscode)]  
-  面向 Windows 本地与 Linux Remote-SSH 环境的 VS Code 扩展，支持多套 Codex Provider 配置的安全切换、SecretStorage 凭据隔离、事务级备份回滚与原生会话续接。
 
 ---
 
 ### 技术栈
 
 - **推理引擎与异构运行时**：`vLLM (V1 Engine / Platform Plugins)` · `PyTorch` · `CUDA / CUDA Graph` · `Ascend CANN (ACLGraph / DataFlow Device UDF)` · `Triton`
-- **系统开发与性能剖析**：`Python` · `C / C++` · `TypeScript` · `PyTorch Profiler / Nsight / Ascend Profiling` · `Linux`
+- **系统开发与性能剖析**：`Python` · `C / C++` · `PyTorch Profiler / Nsight / Ascend Profiling` · `Linux`
